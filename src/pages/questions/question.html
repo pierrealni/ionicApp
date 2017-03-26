@@ -1,0 +1,13 @@
+<ion-card center text-center>
+    <ion-card-header>
+        {{question.sentence}}
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item *ngFor='let option of question.options'>
+            <ion-label>{{option.sentence}}</ion-label>
+            <ion-checkbox checked="false"></ion-checkbox>
+        </ion-item>
+        <br>
+        <button ion-button color="primary" (click)='onConfirm()'>Confirm</button>
+    </ion-card-content>
+</ion-card>
