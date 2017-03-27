@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionService } from './institution.service';
 
+import { AdmissionExamsListComponent } from '../admissionExams/admissionExams-list'
+import { App, ViewController } from 'ionic-angular';
+
 @Component({
     selector: 'ck-institutions',
     templateUrl : 'institutions-list.html',
@@ -11,7 +14,7 @@ export class InstitutionsListComponent implements OnInit{
     institutions: any[];
     errorMessage: string;
 
-    constructor(private _institutionService : InstitutionService){};
+    constructor(private _institutionService : InstitutionService, public appCtrl: App){};
 
     ngOnInit(): void{
         this._institutionService.getInstitutions()
@@ -21,7 +24,8 @@ export class InstitutionsListComponent implements OnInit{
 		);
     }
 
-    selectInstitution(index : number): void{
+    goToInstitutionAdmissionExams(): void{
+        this.appCtrl.getRootNav().push(AdmissionExamsListComponent);
         //TO DO : CALL TO INSTITUTION VIEW
     }
 }

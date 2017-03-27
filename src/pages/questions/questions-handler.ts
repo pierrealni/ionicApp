@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QuestionService } from './question.service';
 
 @Component({
@@ -16,23 +16,20 @@ export class QuestionsHandlerComponent implements OnInit{
     constructor(private _questionService : QuestionService){};
 
     ngOnInit(): void{
-        //get all the questions
+        //get all the questions and set the first one
         this._questionService.getQuestions()
         .subscribe(
 			(questions) => { this.questions = questions; 
                 this.question = questions[this.index]
             },
 		    error => this.errorMessage = <any>error,
-		);
-        //set the first question
-        
+		);        
     }
 
     onConfirmClicked(index: string): void{
-        console.log('the resolved index is '+ index);
-        this.index++;
-        this.question = this.questions[this.index];
         //get the next question
+        this.index++;
+        this.question = this.questions[this.index];      
     }
 
 }
