@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/map';
-//import { IProduct } from './product';
+import { AngularFireDatabase } from "angularfire2";
+import { Response } from '@angular/http';
 
 @Injectable()
 export class InstitutionService {
-    private _url = 'institutions.json';
-    constructor(private http: Http) { }
+    constructor(private db:AngularFireDatabase) {}
 
     getInstitutions(): Observable<any[]> {
-        return this.http.get(this._url)
-            .map((response: Response) => <any[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+        return this.db.list('institutions')
+            .do(data => console.log(data))
             .catch(this.handleError);
+            /*
+            //.map(Institution.fromJsonList);
+            //.map((response: Response) => <any[]>response.json())
+            */
     }
 
     private handleError(error: Response) {
         console.log(error);
         return Observable.throw(error.json().error || 'Server error');
     }
-
 
 }

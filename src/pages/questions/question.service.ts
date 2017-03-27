@@ -1,24 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from "angularfire2";
+import { Response } from '@angular/http';
 
 @Injectable()
 export class QuestionService {
-    private _url = 'questions.json';
-    constructor(private http: Http) { }
 
-    /*getQuestions(): Observable<any[]> {
-        return this.http.get(this._url)
-            .map((response: Response) => <any[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }*/
+    constructor(private db:AngularFireDatabase) {}
 
     getQuestions(): Observable<any[]> {
-        return this.http.get(this._url)
-            .map((response: Response) => <any[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+        return this.db.list('questions')
+            .do(data => console.log(data))
             .catch(this.handleError);
+            /*
+            //.map(Institution.fromJsonList);
+            //.map((response: Response) => <any[]>response.json())
+            */
     }
 
     private handleError(error: Response) {

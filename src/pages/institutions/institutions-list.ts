@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InstitutionService } from './institution.service';
 
 import { AdmissionExamsListComponent } from '../admissionExams/admissionExams-list'
-import { App, ViewController } from 'ionic-angular';
+import { App } from 'ionic-angular';
 
 @Component({
     selector: 'ck-institutions',
@@ -19,13 +19,14 @@ export class InstitutionsListComponent implements OnInit{
     ngOnInit(): void{
         this._institutionService.getInstitutions()
         .subscribe(
-			(institutions) => { this.institutions = institutions; },
+			(institutions) => { 
+                this.institutions = institutions; 
+            },
 		    error => this.errorMessage = <any>error
 		);
     }
 
     goToInstitutionAdmissionExams(): void{
         this.appCtrl.getRootNav().push(AdmissionExamsListComponent);
-        //TO DO : CALL TO INSTITUTION VIEW
     }
 }

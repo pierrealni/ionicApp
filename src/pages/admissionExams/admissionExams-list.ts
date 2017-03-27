@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdmissionExamService } from './admissionExam.service';
 
-import { App, ViewController } from 'ionic-angular';
+import { App } from 'ionic-angular';
 import { QuestionsHandlerComponent } from '../questions/questions-handler'
 
 @Component({
