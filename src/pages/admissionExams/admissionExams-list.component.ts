@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AdmissionExamService } from './admissionExam.service';
 
 import { App } from 'ionic-angular';
-import { QuestionsHandlerComponent } from '../questions/questions-handler'
+import { QuestionsHandlerComponent } from '../questions/questions-handler.component'
 
 @Component({
     selector: 'ck-admission-exams',
-    templateUrl : 'admissionExams-list.html',
+    templateUrl : 'admissionExams-list.component.html',
     providers : [AdmissionExamService]
 })
 export class AdmissionExamsListComponent implements OnInit{

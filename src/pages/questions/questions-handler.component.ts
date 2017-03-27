@@ -3,7 +3,7 @@ import { QuestionService } from './question.service';
 
 @Component({
     selector: 'ck-questions-handler',
-    templateUrl : 'questions-handler.html',
+    templateUrl : 'questions-handler.component.html',
     providers : [QuestionService]
 })
 export class QuestionsHandlerComponent implements OnInit{

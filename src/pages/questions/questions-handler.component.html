@@ -1,0 +1,9 @@
+<ion-header ck-header>
+</ion-header>
+
+<ion-content padding>
+
+    <ck-question *ngIf='questions.length && question' [question]='question' (confirmClicked)='onConfirmClicked($event)'>
+    </ck-question>
+
+</ion-content>

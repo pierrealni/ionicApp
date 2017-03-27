@@ -1,0 +1,17 @@
+<ion-header ck-header>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      Examenes
+    </ion-list-header>
+    <ion-item *ngFor="let admissionExam of admissionExams" (click)='goToAdmissionExamQuestions()'>
+      <h2>{{admissionExam.institution}}</h2>
+      <h3>{{admissionExam.date}}</h3>
+      <p>{{admissionExam.modality}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

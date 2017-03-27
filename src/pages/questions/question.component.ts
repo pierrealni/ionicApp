@@ -3,7 +3,7 @@ import { QuestionService } from './question.service';
 
 @Component({
     selector: 'ck-question',
-    templateUrl : 'question.html',
+    templateUrl : 'question.component.html',
     providers : [QuestionService]
 })
 export class QuestionComponent {

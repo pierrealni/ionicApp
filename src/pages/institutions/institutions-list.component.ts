@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionService } from './institution.service';
 
-import { AdmissionExamsListComponent } from '../admissionExams/admissionExams-list'
+import { AdmissionExamsListComponent } from '../admissionExams/admissionExams-list.component'
 import { App } from 'ionic-angular';
 
 @Component({
     selector: 'ck-institutions',
-    templateUrl : 'institutions-list.html',
+    templateUrl : 'institutions-list.component.html',
     providers : [InstitutionService]
 })
 export class InstitutionsListComponent implements OnInit{
