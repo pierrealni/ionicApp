@@ -3,10 +3,12 @@
         {{question.sentence}}
     </ion-card-header>
     <ion-card-content>
-        <ion-item *ngFor='let option of question.options'>
-            <ion-label>{{option.sentence}}</ion-label>
-            <ion-checkbox checked="false"></ion-checkbox>
-        </ion-item>
+        <ion-list radio-group [(ngModel)]='selectedOptionIndex'>
+            <ion-item *ngFor='let option of question.options; let i = index'>
+                <ion-label>{{option.sentence}}</ion-label>
+                <ion-radio [value]='i'></ion-radio>
+            </ion-item>
+        </ion-list>
         <br>
         <button ion-button color="primary" (click)='onConfirm()'>Confirmar</button>
     </ion-card-content>

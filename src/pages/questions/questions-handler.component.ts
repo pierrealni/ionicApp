@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from './question.service';
+import { NavParams, NavController } from 'ionic-angular';
 
 @Component({
     selector: 'ck-questions-handler',
@@ -12,12 +13,15 @@ export class QuestionsHandlerComponent implements OnInit{
     errorMessage: string;
     question: any;
     index: number = 0;
+    totalGrade: number =0;
+    questionsCompleted: boolean = false;
 
-    constructor(private _questionService : QuestionService){};
+    constructor(private _questionService : QuestionService, private navParams: NavParams, public navCtrl: NavController){};
 
     ngOnInit(): void{
         //get all the questions and set the first one
-        this._questionService.getQuestions()
+        let key: string = this.navParams.get('admissionExamKey');
+        this._questionService.getQuestionsPerAdmissionExam(key)
         .subscribe(
 			(questions) => { this.questions = questions; 
                 this.question = questions[this.index]
@@ -26,10 +30,19 @@ export class QuestionsHandlerComponent implements OnInit{
 		);        
     }
 
-    onConfirmClicked(index: string): void{
+    onConfirmClicked(selectedOptionIsCorrect: boolean): void{
+        this.totalGrade += (selectedOptionIsCorrect? this.question.grade : 0);
         //get the next question
-        this.index++;
-        this.question = this.questions[this.index];      
+        if(this.index === (this.questions.length - 1)){
+            this.questionsCompleted = true;
+        }else{
+            this.index++;
+            this.question = this.questions[this.index];
+        }        
+    }
+
+    goToAdmissionExams(){
+        this.navCtrl.pop();
     }
 
 }

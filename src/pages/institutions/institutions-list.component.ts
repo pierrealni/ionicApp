@@ -26,7 +26,8 @@ export class InstitutionsListComponent implements OnInit{
 		);
     }
 
-    goToInstitutionAdmissionExams(): void{
-        this.appCtrl.getRootNav().push(AdmissionExamsListComponent);
+    goToInstitutionAdmissionExams(key: string): void{
+        let params: any = { institutionKey:  key };
+        this.appCtrl.getRootNav().push(AdmissionExamsListComponent, params);
     }
 }

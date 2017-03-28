@@ -7,22 +7,45 @@ import { Response } from '@angular/http';
 export class AdmissionExamService {
     constructor(private db:AngularFireDatabase) { }
 
-    /*getAdmissionExams(): Observable<any[]> {
-        return this.http.get(this._url)
-            .map((response: Response) => <any[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }*/
-
-    getAdmissionExams():  Observable<any[]> {
-        return this.db.list('admissionExams')
+   
+    getAdmissionExamsPerInstitution(key: string): Observable<any[]>{
+        return  this.db.list('admissionExams', 
+        { 
+            query : { indexOn: 'institutionId', orderByChild: 'institutionId', equalTo: key }
+        })
             .do(data => console.log(data))
             .catch(this.handleError);
-            /*
-            //.map(Institution.fromJsonList);
-            //.map((response: Response) => <any[]>response.json())
-            */
     }
+
+    /*
+    admissionExamsPerInstitution(key: string): any[]{
+        let admissionExams: any = []
+        this.getAdmissionExamsPerInstitution(key)
+        .subscribe(
+                (admissionExamsIds) => { 
+                    admissionExamsIds.forEach( (item) =>
+                        {
+                            this.getAdmissionExam(item.$key)
+                            .subscribe( (_admissionExam) => { admissionExams.push(_admissionExam)} );
+                        }
+                    )
+                }
+		    );
+        return admissionExams;
+    }
+    getAdmissionExamsPerInstitution(key:string):  Observable<any[]> {
+        return this.db.list('admissionExamsPerInstitution/'+ key)
+            .do(data => console.log(data))
+            .catch(this.handleError)
+    }
+
+    getAdmissionExam(key: string):  Observable<any[]>{
+        return this.db.object('admissionExams/'+ key)
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }
+    */
+
     private handleError(error: Response) {
         console.log(error);
         return Observable.throw(error.json().error || 'Server error');

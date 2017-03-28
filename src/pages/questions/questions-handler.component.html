@@ -3,7 +3,12 @@
 
 <ion-content padding>
 
-    <ck-question *ngIf='questions.length && question' [question]='question' (confirmClicked)='onConfirmClicked($event)'>
+    <ck-question *ngIf='questions.length && question && !questionsCompleted' [question]='question' (confirmClicked)='onConfirmClicked($event)'>
     </ck-question>
 
+    <div *ngIf='questionsCompleted'>
+        <h3>¡Examen Completo!</h3>
+        <p> Puntaje Total : {{ totalGrade }} </p>
+        <button ion-button color="primary" (click)='goToAdmissionExams()'>Regresar a Examenes</button>
+    </div>
 </ion-content>

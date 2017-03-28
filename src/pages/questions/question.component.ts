@@ -10,12 +10,12 @@ export class QuestionComponent {
 
     @Input() question: any;
     @Output() confirmClicked: EventEmitter<string> = new EventEmitter<string>();
-
-    //constructor(private _questionService : QuestionService){};
+    selectedOptionIndex: any = undefined;
 
     onConfirm(): void{
-        console.log('from question.ts');
-        this.confirmClicked.emit(`${this.question.index}`);
+        console.log(this.question[this.selectedOptionIndex]);
+        let result = (this.selectedOptionIndex !== undefined? this.question.options[this.selectedOptionIndex].isCorrect : false); 
+        this.confirmClicked.emit(result);
     }
 
 }

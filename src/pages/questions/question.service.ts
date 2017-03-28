@@ -8,14 +8,13 @@ export class QuestionService {
 
     constructor(private db:AngularFireDatabase) {}
 
-    getQuestions(): Observable<any[]> {
-        return this.db.list('questions')
+    getQuestionsPerAdmissionExam(key: string): Observable<any[]> {
+        return this.db.list('questions', 
+        { 
+            query : { indexOn: 'admissionExamId', orderByChild: 'admissionExamId', equalTo: key }
+        })
             .do(data => console.log(data))
             .catch(this.handleError);
-            /*
-            //.map(Institution.fromJsonList);
-            //.map((response: Response) => <any[]>response.json())
-            */
     }
 
     private handleError(error: Response) {

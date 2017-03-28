@@ -7,7 +7,7 @@
     <ion-list-header>
       Examenes
     </ion-list-header>
-    <ion-item *ngFor="let admissionExam of admissionExams" (click)='goToAdmissionExamQuestions()'>
+    <ion-item *ngFor='let admissionExam of admissionExams' (click)='goToAdmissionExamQuestions(admissionExam.$key)'>
       <h2>{{admissionExam.institution}}</h2>
       <h3>{{admissionExam.date}}</h3>
       <p>{{admissionExam.modality}}</p>

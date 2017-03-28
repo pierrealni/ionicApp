@@ -11,10 +11,6 @@ export class InstitutionService {
         return this.db.list('institutions')
             .do(data => console.log(data))
             .catch(this.handleError);
-            /*
-            //.map(Institution.fromJsonList);
-            //.map((response: Response) => <any[]>response.json())
-            */
     }
 
     private handleError(error: Response) {
