@@ -5,14 +5,37 @@ import { Response } from '@angular/http';
 
 @Injectable()
 export class AdmissionExamService {
-    constructor(private db:AngularFireDatabase) { }
+    constructor(private db: AngularFireDatabase) { }
 
-   
-    getAdmissionExamsPerInstitution(key: string): Observable<any[]>{
-        return  this.db.list('admissionExams', 
-        { 
-            query : { indexOn: 'institutionId', orderByChild: 'institutionId', equalTo: key }
-        })
+    /*getExamsPerInstitutionView(key: string): any[] {
+        this.getExamGroupsPerInstitution(key)
+            .subscribe(
+            (groups) => {
+                    groups.forEach((group) => {
+                        this.getExamsPerGroup(group.$key)
+                            .subscribe((exams) => { 
+                                group.exams = exams
+                            });
+                    });
+                    return groups;
+            }
+        );
+    }*/
+
+    getExamsPerGroup(key: string): Observable<any[]> {
+        return this.db.list('exams',
+            {
+                query: { orderByChild: 'examGroupId', equalTo: key }
+            })
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }
+
+    getExamGroupsPerInstitution(key: string): Observable<any[]> {
+        return this.db.list('examGroups',
+            {
+                query: { orderByChild: 'institutionId', equalTo: key }
+            })
             .do(data => console.log(data))
             .catch(this.handleError);
     }

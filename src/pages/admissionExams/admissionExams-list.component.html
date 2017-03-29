@@ -2,15 +2,25 @@
 </ion-header>
 
 <ion-content padding>
-
   <ion-list>
     <ion-list-header>
-      Examenes
+      Examenes Individuales
     </ion-list-header>
-    <ion-item *ngFor='let admissionExam of admissionExams' (click)='goToAdmissionExamQuestions(admissionExam.$key)'>
-      <h2>{{admissionExam.institution}}</h2>
-      <h3>{{admissionExam.date}}</h3>
-      <p>{{admissionExam.modality}}</p>
+    <ion-item *ngFor='let exam of individualExams' (click)='goToExamQuestions(exam.$key)'>
+      <h2>{{exam.institution}}</h2>
+      <h3>{{exam.date}}</h3>
+      <p>{{exam.modality}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngFor='let group of groupExams'>
+    <ion-list-header>
+      Examen Grupal
+    </ion-list-header>
+    <ion-item *ngFor='let exam of group.exams' (click)='goToExamQuestions(exam.$key)'>
+      <h2>{{exam.institution}}</h2>
+      <h3>{{exam.date}}</h3>
+      <p>{{exam.modality}}</p>
     </ion-item>
   </ion-list>
 
