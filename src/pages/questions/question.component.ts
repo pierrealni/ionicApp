@@ -13,7 +13,6 @@ export class QuestionComponent {
     selectedOptionIndex: any = undefined;
 
     onConfirm(): void{
-        console.log(this.question[this.selectedOptionIndex]);
         let result = (this.selectedOptionIndex !== undefined? this.question.options[this.selectedOptionIndex].isCorrect : false); 
         this.confirmClicked.emit(result);
     }

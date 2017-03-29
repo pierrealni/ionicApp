@@ -6,7 +6,7 @@
     <ck-question *ngIf='questions.length && question && !questionsCompleted' [question]='question' (confirmClicked)='onConfirmClicked($event)'>
     </ck-question>
 
-    <div *ngIf='questionsCompleted'>
+    <div *ngIf='questionsCompleted' center text-center>
         <h3>¡Examen Completo!</h3>
         <p> Puntaje Total : {{ totalGrade }} </p>
         <button ion-button color="primary" (click)='goToAdmissionExams()'>Regresar a Examenes</button>

@@ -42,7 +42,7 @@ export class QuestionsHandlerComponent implements OnInit{
     }
 
     goToAdmissionExams(){
-        this.navCtrl.pop();
+        this.navCtrl.popToRoot();
     }
 
 }
