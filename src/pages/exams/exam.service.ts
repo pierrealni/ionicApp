@@ -4,7 +4,7 @@ import { AngularFireDatabase } from "angularfire2";
 import { Response } from '@angular/http';
 
 @Injectable()
-export class AdmissionExamService {
+export class ExamService {
     constructor(private db: AngularFireDatabase) { }
 
     /*getExamsPerInstitutionView(key: string): any[] {

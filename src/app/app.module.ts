@@ -5,10 +5,11 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { InstitutionsListComponent } from '../pages/institutions/institutions-list.component';
-import { AdmissionExamsListComponent } from '../pages/admissionExams/admissionExams-list.component';
+import { ExamsListComponent } from '../pages/exams/exams-list.component';
 import { QuestionsHandlerComponent } from '../pages/questions/questions-handler.component';
 import { QuestionComponent } from '../pages/questions/question.component';
 import { HeaderComponent } from '../pages/header/header.component';
+import { ExamAreasList } from '../pages/areas/examAreas-list.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,10 +35,11 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     InstitutionsListComponent,
-    AdmissionExamsListComponent,
+    ExamsListComponent,
     QuestionsHandlerComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExamAreasList
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -49,10 +51,11 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     InstitutionsListComponent,
-    AdmissionExamsListComponent,
+    ExamsListComponent,
     QuestionsHandlerComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExamAreasList
   ],
   providers: [
     StatusBar,

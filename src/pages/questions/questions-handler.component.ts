@@ -20,14 +20,33 @@ export class QuestionsHandlerComponent implements OnInit{
 
     ngOnInit(): void{
         //get all the questions and set the first one
-        let key: string = this.navParams.get('admissionExamKey');
-        this._questionService.getQuestionsPerAdmissionExam(key)
+        let key: string = this.navParams.get('examKey');
+        /*this._questionService.getQuestionsPerAdmissionExam(key)
         .subscribe(
 			(questions) => { this.questions = questions; 
                 this.question = questions[this.index]
             },
 		    error => this.errorMessage = <any>error,
-		);        
+		);*/
+        this._questionService.getExamAreasPerExam(key)
+            .subscribe(
+            (items) => {
+                    items.forEach((item) => {
+                        this._questionService.getExamAreaQuestionsPerExamArea(item.$key)
+                            .subscribe((EAQs) => { 
+                                EAQs.forEach((EAQ) => {
+                                     this._questionService.getQuestionPerExamAreaQuestion(EAQ.questionId)
+                                     .subscribe((question) => { 
+                                        this.questions.push(question);
+                                        if(this.questions.length === 1){
+                                            this.question = question;
+                                        }
+                                    });
+                                });
+                            });
+                    });
+            }
+        );        
     }
 
     onConfirmClicked(selectedOptionIsCorrect: boolean): void{

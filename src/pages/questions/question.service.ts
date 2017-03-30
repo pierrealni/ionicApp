@@ -8,15 +8,37 @@ export class QuestionService {
 
     constructor(private db:AngularFireDatabase) {}
 
-    getQuestionsPerAdmissionExam(key: string): Observable<any[]> {
+    /*getQuestionsPerAdmissionExam(key: string): Observable<any[]> {
         return this.db.list('questions', 
         { 
-            query : { indexOn: 'admissionExamId', orderByChild: 'admissionExamId', equalTo: key }
+            query : { orderByChild: 'examId', equalTo: key }
         })
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }*/
+
+    getQuestionPerExamAreaQuestion(key: string): Observable<any[]> {
+        return this.db.object('questions/'+key)
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
+    getExamAreaQuestionsPerExamArea(key: string): Observable<any[]> {
+        return this.db.list('examAreaQuestions', 
+        { 
+            query : { orderByChild: 'examAreaId', equalTo: key }
+        })
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }
+    getExamAreasPerExam(key: string): Observable<any[]> {
+        return this.db.list('examAreas', 
+        { 
+            query : { orderByChild: 'examId', equalTo: key }
+        })
+            .do(data => console.log(data))
+            .catch(this.handleError);
+    }
     private handleError(error: Response) {
         console.log(error);
         return Observable.throw(error.json().error || 'Server error');

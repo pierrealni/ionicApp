@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionService } from './institution.service';
 
-import { AdmissionExamsListComponent } from '../admissionExams/admissionExams-list.component'
+import { ExamsListComponent } from '../exams/exams-list.component'
 import { App } from 'ionic-angular';
 
 @Component({
@@ -26,8 +26,8 @@ export class InstitutionsListComponent implements OnInit{
 		);
     }
 
-    goToInstitutionAdmissionExams(key: string): void{
+    goToExams(key: string): void{
         let params: any = { institutionKey:  key };
-        this.appCtrl.getRootNav().push(AdmissionExamsListComponent, params);
+        this.appCtrl.getRootNav().push(ExamsListComponent, params);
     }
 }

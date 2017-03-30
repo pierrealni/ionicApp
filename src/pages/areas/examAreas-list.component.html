@@ -1,0 +1,29 @@
+<ion-header ck-header>
+</ion-header>
+
+<ion-content padding>
+    <div padding>
+        <ion-segment [(ngModel)]="areaSelected">
+            <ion-segment-button *ngFor='let area of areas' [value]='area.name'>
+                    {{ area.name }}
+                </ion-segment-button>
+            </ion-segment>
+            <!--<ion-segment-button value="Historia">
+                Historia
+            </ion-segment-button>
+            <ion-segment-button value="Algebra">
+                Algebra
+            </ion-segment-button>
+        </ion-segment>-->
+    </div>
+
+    <div > <!-- [ngSwitch]='areaSelected' -->
+        <div *ngFor='let area of areas'>
+            <ion-list  > <!-- *ngSwitchCase='area.name' -->
+                <ion-item *ngFor='let question of area.questions' (click)='goToQuestion(question.$key)'>
+                    <p>{{question.questionSentence}}</p>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

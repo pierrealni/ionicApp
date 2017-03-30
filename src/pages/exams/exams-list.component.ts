@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { AdmissionExamService } from './admissionExam.service';
+import { ExamService } from './exam.service';
 
 import { App } from 'ionic-angular';
 import { QuestionsHandlerComponent } from '../questions/questions-handler.component';
+import { ExamAreasList } from '../areas/examAreas-list.component';
 import { NavParams } from 'ionic-angular';
 
 
 @Component({
-    selector: 'ck-admission-exams',
-    templateUrl : 'admissionExams-list.component.html',
-    providers : [AdmissionExamService]
+    selector: 'ck-exams',
+    templateUrl : 'exams-list.component.html',
+    providers : [ExamService]
 })
-export class AdmissionExamsListComponent implements OnInit{
+export class ExamsListComponent implements OnInit{
 
     individualExams: any[] = [];
     groupExams: any[] = [];
     errorMessage: string;
 
-    constructor(private _admissionExamService : AdmissionExamService, public appCtrl: App, private navParams: NavParams){};
+    constructor(private _examService : ExamService, public appCtrl: App, private navParams: NavParams){};
 
     ngOnInit(): void{
         let key: string = this.navParams.get('institutionKey');
@@ -26,11 +27,11 @@ export class AdmissionExamsListComponent implements OnInit{
 			(admissionExams) => { this.admissionExams = admissionExams; },
 		    error => this.errorMessage = <any>error
 		);*/
-        this._admissionExamService.getExamGroupsPerInstitution(key)
+        this._examService.getExamGroupsPerInstitution(key)
             .subscribe(
             (groups) => {
                     groups.forEach((group) => {
-                        this._admissionExamService.getExamsPerGroup(group.$key)
+                        this._examService.getExamsPerGroup(group.$key)
                             .subscribe((exams) => { 
                                 if(exams.length <= 1){
                                     this.individualExams.push(exams[0]);                    
@@ -45,8 +46,9 @@ export class AdmissionExamsListComponent implements OnInit{
     }
 
     goToExamQuestions(key: string): void{
-        let params: any = { admissionExamKey:  key };
-        this.appCtrl.getRootNav().push(QuestionsHandlerComponent, params);
+        let params: any = { examKey:  key };
+        //this.appCtrl.getRootNav().push(QuestionsHandlerComponent, params);
+        this.appCtrl.getRootNav().push(ExamAreasList, params);
     }
 
 }
