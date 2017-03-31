@@ -8,6 +8,7 @@ import { AboutComponent } from '../pages/about/about.component';
 import { InstitutionsListComponent } from '../pages/institutions/institutions-list.component';
 import { ExamsListComponent } from '../pages/exams/exams-list.component';
 import { QuestionsHandlerComponent } from '../pages/questions/questions-handler.component';
+import { QuestionHandlerComponent } from '../pages/questions/question-handler.component';
 import { QuestionComponent } from '../pages/questions/question.component';
 import { HeaderComponent } from '../pages/header/header.component';
 import { ExamAreasList } from '../pages/areas/examAreas-list.component';
@@ -39,6 +40,7 @@ export const firebaseConfig = {
     InstitutionsListComponent,
     ExamsListComponent,
     QuestionsHandlerComponent,
+    QuestionHandlerComponent,
     QuestionComponent,
     HeaderComponent,
     ExamAreasList
@@ -56,6 +58,7 @@ export const firebaseConfig = {
     InstitutionsListComponent,
     ExamsListComponent,
     QuestionsHandlerComponent,
+    QuestionHandlerComponent,
     QuestionComponent,
     HeaderComponent,
     ExamAreasList

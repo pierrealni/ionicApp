@@ -17,7 +17,7 @@ export class QuestionService {
             .catch(this.handleError);
     }*/
 
-    getQuestionPerExamAreaQuestion(key: string): Observable<any[]> {
+    getQuestion(key: string): Observable<any[]> {
         return this.db.object('questions/'+key)
             .do(data => console.log(data))
             .catch(this.handleError);

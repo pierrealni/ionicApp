@@ -17,16 +17,13 @@ export class ExamsListComponent implements OnInit{
     individualExams: any[] = [];
     groupExams: any[] = [];
     errorMessage: string;
+    institutionName: string;
 
     constructor(private _examService : ExamService, public appCtrl: App, private navParams: NavParams){};
 
     ngOnInit(): void{
         let key: string = this.navParams.get('institutionKey');
-        /*this._admissionExamService.getExamsPerInstitutionView(key)
-        .subscribe(
-			(admissionExams) => { this.admissionExams = admissionExams; },
-		    error => this.errorMessage = <any>error
-		);*/
+        this.institutionName =  this.navParams.get('institutionName');
         this._examService.getExamGroupsPerInstitution(key)
             .subscribe(
             (groups) => {

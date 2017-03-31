@@ -14,7 +14,7 @@ export class InstitutionsListComponent implements OnInit{
     institutions: any[];
     errorMessage: string;
 
-    constructor(private _institutionService : InstitutionService, public appCtrl: App){};
+    constructor(private _institutionService : InstitutionService, private appCtrl: App){};
 
     ngOnInit(): void{
         this._institutionService.getInstitutions()
@@ -26,8 +26,10 @@ export class InstitutionsListComponent implements OnInit{
 		);
     }
 
-    goToExams(key: string): void{
-        let params: any = { institutionKey:  key };
+    goToExams(index: number): void{
+        console.log(index);
+        console.log( this.institutions[index]);
+        let params: any = { institutionKey:  this.institutions[index].$key, institutionName: this.institutions[index].name };
         this.appCtrl.getRootNav().push(ExamsListComponent, params);
     }
 }

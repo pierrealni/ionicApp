@@ -1,0 +1,13 @@
+<ion-header ck-header>
+</ion-header>
+
+<ion-content padding>
+
+    <ck-question *ngIf='question && !questionCompleted' [question]='question' (confirmClicked)='onConfirmClicked($event)'>
+    </ck-question>
+
+    <!--<div *ngIf='questionCompleted' center text-center>
+        <h3> Respuesta {{ selectedOptionIsCorrect? 'Correcta' : 'Incorrecta' }}</h3>
+        <button ion-button color="primary" (click)='goBack()'>Regresar</button>
+    </div>-->
+</ion-content>

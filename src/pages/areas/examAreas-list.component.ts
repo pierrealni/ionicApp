@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../questions/question.service';
-import { NavParams, NavController } from 'ionic-angular';
+import { NavParams, App} from 'ionic-angular';
+import { QuestionHandlerComponent } from '../questions/question-handler.component';
+
 
 @Component({
     selector: 'ck-examAreas-list',
@@ -12,7 +14,7 @@ export class ExamAreasList implements OnInit{
     areas: any[] = [];
     errorMessage: string;
 
-    constructor(private _questionService : QuestionService, private navParams: NavParams, public navCtrl: NavController){};
+    constructor(private _questionService : QuestionService, private navParams: NavParams, private appCtrl: App){};
 
     ngOnInit(): void{
         let key: string = this.navParams.get('examKey');
@@ -31,5 +33,11 @@ export class ExamAreasList implements OnInit{
             }
         );        
     }
+
+    goToQuestion(key: string): void{
+        let params: any = { questionKey: key };
+        this.appCtrl.getRootNav().push(QuestionHandlerComponent, params);        
+    }
+
 
 }

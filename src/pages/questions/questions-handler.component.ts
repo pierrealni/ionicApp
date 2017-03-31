@@ -35,7 +35,7 @@ export class QuestionsHandlerComponent implements OnInit{
                         this._questionService.getExamAreaQuestionsPerExamArea(item.$key)
                             .subscribe((EAQs) => { 
                                 EAQs.forEach((EAQ) => {
-                                     this._questionService.getQuestionPerExamAreaQuestion(EAQ.questionId)
+                                     this._questionService.getQuestion(EAQ.questionId)
                                      .subscribe((question) => { 
                                         this.questions.push(question);
                                         if(this.questions.length === 1){
