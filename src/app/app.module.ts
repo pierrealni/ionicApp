@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AboutComponent } from '../pages/about/about.component';
 import { InstitutionsListComponent } from '../pages/institutions/institutions-list.component';
 import { ExamsListComponent } from '../pages/exams/exams-list.component';
 import { QuestionsHandlerComponent } from '../pages/questions/questions-handler.component';
@@ -34,6 +35,7 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
+    AboutComponent,
     InstitutionsListComponent,
     ExamsListComponent,
     QuestionsHandlerComponent,
@@ -50,6 +52,7 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
+    AboutComponent,
     InstitutionsListComponent,
     ExamsListComponent,
     QuestionsHandlerComponent,
