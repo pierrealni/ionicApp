@@ -1,0 +1,10 @@
+<ion-header ck-header mainMenuAccess='true' title="Admin">
+</ion-header>
+
+<ion-content padding center text-center>
+    <ion-list  no-lines >
+        <ion-item *ngFor='let option of options' (click)='openPage(option)'>
+            <button ion-button primary>{{option.title}}</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

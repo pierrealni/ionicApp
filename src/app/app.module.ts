@@ -12,6 +12,8 @@ import { QuestionHandlerComponent } from '../pages/questions/question-handler.co
 import { QuestionComponent } from '../pages/questions/question.component';
 import { HeaderComponent } from '../pages/header/header.component';
 import { ExamAreasList } from '../pages/areas/examAreas-list.component';
+import { AdminOptionsListComponent } from '../pages/admin/admin-options-list.component';
+import { CreateExamGroupComponent } from '../pages/admin/create-examGroup.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +45,9 @@ export const firebaseConfig = {
     QuestionHandlerComponent,
     QuestionComponent,
     HeaderComponent,
-    ExamAreasList
+    ExamAreasList,
+    AdminOptionsListComponent,
+    CreateExamGroupComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -61,7 +65,9 @@ export const firebaseConfig = {
     QuestionHandlerComponent,
     QuestionComponent,
     HeaderComponent,
-    ExamAreasList
+    ExamAreasList,
+    AdminOptionsListComponent,
+    CreateExamGroupComponent
   ],
   providers: [
     StatusBar,

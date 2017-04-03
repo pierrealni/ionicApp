@@ -27,8 +27,6 @@ export class InstitutionsListComponent implements OnInit{
     }
 
     goToExams(index: number): void{
-        console.log(index);
-        console.log( this.institutions[index]);
         let params: any = { institutionKey:  this.institutions[index].$key, institutionName: this.institutions[index].name };
         this.appCtrl.getRootNav().push(ExamsListComponent, params);
     }
